@@ -6,16 +6,20 @@ int main(void) {
   scanf("%d", &N);
   int *Mass = (int*)malloc(sizeof(int) * N);
   for (int i = 0; i < N; i++)
+  {
     scanf("%d", &Mass[i]);
-
-  for (int i = 0; i < N; i++)
-    for (int p = 0; p < N; p++)
+  }
+  for (int i = 0; i < N-1; i++)
+    for (int p = 0; p < N-1; p++)
       if (Mass[p] > Mass[p + 1]) {
-        int t = Mass[p];
+        int some = Mass[p];
         Mass[p] = Mass[p + 1];
-        Mass[p + 1] = t;
+        Mass[p + 1] = some;
       }
-  for (int i = N; i > 0; i--)
+  for (int i = N - 1; i >= 0; i--)
     printf("%d ", Mass[i]);
+  
+  printf("\n");
+  free(Mass);
   return 0;
 }
